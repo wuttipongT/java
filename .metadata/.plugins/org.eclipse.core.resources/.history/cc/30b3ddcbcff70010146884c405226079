@@ -1,0 +1,21 @@
+package JButton;
+
+import javax.swing.JFrame;
+
+import JFrame.MyFrame_1;
+
+public class MyButton_1 {
+
+	private MyButton_1() {
+		MyFrame_1 gui = new MyFrame_1();
+		gui.setSize(250,400);
+		gui.setLocation(40,50);
+		gui.setTitle("My_Button");
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new MyButton_1();
+	}
+
+}

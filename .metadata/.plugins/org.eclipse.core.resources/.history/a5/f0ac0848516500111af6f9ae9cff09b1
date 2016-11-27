@@ -1,0 +1,35 @@
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
+import javax.swing.JFrame;
+
+
+public class sketchNode extends JFrame{
+	
+	public sketchNode() {
+		// TODO Auto-generated constructor stub
+	}
+	public void nodeStart(Graphics g){
+		g.drawOval(50, 100, 50, 50);
+		g.drawString("Start", 60, 130);
+	}
+	public void direcTo2(Graphics g){
+		g.drawLine(150, 125, 100, 125);
+		g.drawString("(a,A,R)", 110, 123);
+	}
+	public void node2(Graphics g){
+			g.drawOval(150, 100, 50, 50);
+			g.drawString("#2", 168, 129);
+	}
+	public void loopArc1(Graphics g){
+		
+		g.drawArc(157, 84, 35, 45, 0, 180);//เส้นโค้ง
+		g.drawString("(a,A,R)", 160, 79);
+	}
+}

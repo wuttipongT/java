@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="MS874" standalone="no"?>
+<jardesc>
+    <jar path="C:/Documents and Settings/Administrator/Desktop/Ex 13 Turing Mathine.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/Theory/Ex 13 Turing Mathine.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="true" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=Theory/src&lt;{Node.java[Node" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <folder path="/Theory/image"/>
+        <file path="/Theory/.classpath"/>
+        <javaElement handleIdentifier="=Theory/src"/>
+        <file path="/Theory/.project"/>
+    </selectedElements>
+</jardesc>

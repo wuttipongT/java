@@ -1,0 +1,26 @@
+import java.awt.Graphics;
+
+
+public class sketchNode extends Graphics{
+
+	/**
+	 * @param args
+	 */
+	private String nameNode = "";
+	private String a,b,c;
+	public sketchNode(String nameNode ,String a,String b, String c) {
+		// TODO Auto-generated constructor stub
+		this.nameNode = nameNode;
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+	public void drawOvels(){//วาดวงกลม
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("ddd");
+	}
+
+}

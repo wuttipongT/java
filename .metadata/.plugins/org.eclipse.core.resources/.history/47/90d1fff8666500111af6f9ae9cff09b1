@@ -1,0 +1,352 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Iterator;
+import java.util.regex.Pattern;
+
+public class Node extends JFrame implements ActionListener{
+
+	/**
+	 * @param args
+	 */
+	private static Graphics start,node2,node3,node4,node5,halt;
+	private static Graphics direcTo2,direcTo3,direcTo4,direcTo5,direcHalt1,direcHalt2;
+	private static Graphics loopArc1,loopArc2,loopArc3,loopArc4;
+	JTextField input,output;
+	sketchNode sketch = new sketchNode();
+	JButton check;
+	private static int counta=0,countb=0,countc=0;
+	int num = 1;
+	public Node() {
+		// TODO Auto-generated constructor stub
+		setLayout(null);
+		repaint();
+		initComponent();
+		myFrame();
+	}
+	
+	private void initComponent(){
+		input = new JTextField();
+		input.setHorizontalAlignment(JTextField.CENTER);
+		//input.setFont(new Font("Tahoma", Font.BOLD, 18));
+		output = new  JTextField();
+		output.setHorizontalAlignment(JTextField.CENTER);
+		output.setEditable(false);
+		check = new JButton("Check!");
+		check.setBounds(720, 220, 100, 30);
+		check.addActionListener(this);
+		JPanel p = new JPanel(new GridLayout(2,2));
+		JLabel inName = new JLabel("Plase Insert Pattern :");
+		JLabel outName = new JLabel("Ouput! :");
+		p.add(inName);
+		p.add(input);
+		p.add(outName);
+		p.add(output); 
+		p.setBorder(new TitledBorder(new LineBorder(Color.black),"13.a^n b^n+1 c^n+2 โดยที่ n >= 0!"));
+		p.setBounds(420,20,400,200);
+		add(p);
+		add(check);
+		
+	}
+	private void myFrame(){
+		setSize(850,400);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	public static boolean checkChar(String input)
+	{
+	    boolean check = false;
+	    char[] in = input.toCharArray();
+	    
+	    for (int i = 0; i < in.length; i++) 
+	    {
+	        System.out.println(in[i]);
+	        
+	        if(in[i]=='a'||in[i]=='b'||in[i]=='c')
+	            check=true;
+	        else
+	        {
+	            check=false;
+	            break;
+	        }
+	    }
+	         return check;  
+	}
+
+	////***************************  ตำแหน่ง *****************************
+	//public static boolean  position(char[] in,boolean check)
+	//{
+//	    boolean answer = false ;
+//	    for (int i = 0; i < 2; i++) 
+//	    {
+//	        if (in[0]=='a'||in[0]=='b') 
+//	             answer = true;
+//	        else
+//	             answer = false;   
+//	    }
+//	    return answer;
+	//}
+	public static boolean length(String input)
+	{
+	    boolean test_pattern = false;
+	    int posit_a=0, posit_b=0,posit_bb=0, posit_c=0;
+	    int anb=0,anc=0;
+
+	    char[] in = input.toCharArray();
+	    
+	    for (int i = 0; i < in.length; i++) 
+	    { 
+	        if(in[i]=='a')
+	        {
+	           posit_a=i;
+	           counta++;
+	        }
+	        else if(in[i]=='b')
+	        {
+	            if (posit_b==0)
+	                anb=i;
+	            
+	            posit_bb=i;
+	            countb++;
+	            posit_b++;
+	        }
+	        else if(in[i]=='c')
+	        {
+	            if (posit_c==0)
+	                anc=i;
+	            
+	            countc++;
+	            posit_c++;
+	        }
+	    }
+	    
+	   System.out.println(posit_a);
+	   System.out.println("b >> "+anb);
+	   System.out.println("bb >> "+posit_bb); 
+	   System.out.println("c >> "+anc);
+	   
+	    if(counta==0&&countb==1&&countc==2)
+	    {
+	        test_pattern=true;
+	    }
+	    else
+	    {
+	        if(posit_a<anb&&posit_bb<anc)
+	        {
+	           if((counta+1)==countb)
+	           {
+	               if(countb+1==countc)
+	               {
+	                   System.out.println(counta+" : "+countb+" : "+countc +" OK");
+	                   test_pattern=true;
+	               }
+	                else
+	               {
+	                     System.out.println(counta+" : "+countb+" : "+countc +" NOT OK 1");
+	                     test_pattern=false;
+	               }
+	           }
+	           else
+	           {
+	                   System.out.println(counta+" : "+countb+" : "+countc +" NOT OK 2");
+	                   test_pattern=false;
+	           }
+	        }
+	        else
+	            System.out.println("pattern Not OK");
+	    }
+	    return test_pattern;
+
+	}
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Object source = e.getSource();
+		if(source ==check){
+			//JOptionPane.showMessageDialog(this, "check!");
+			  //if(!output.getText().equals(""))output.setText("");
+			    String pettern = input.getText();
+			    boolean ch = checkChar(pettern);
+			        if(ch==true)
+			        {
+			            boolean check = length(pettern);
+			            if (check==true) {
+			                char []pattern = parseString(pettern);
+			                int i =0 ;
+			                Graphics g = getGraphics();
+			                for (i=0; i < pattern.length; i++) {
+			                	g.setColor(Color.red);
+			                	sketch.nodeStart(g);
+								if(pattern[0]=='a'){
+									sleep();
+									sketch.direcTo2(g);
+									sleep();
+									sketch.node2(g);
+									checkArc1();
+									sleep();
+									sketch.direcTo3(g);
+									sleep();
+									sketch.node3(g);
+									num=1;
+									checkArc2();
+									sleep();
+									sketch.direcTo4(g);
+									sleep();
+									sketch.node4(g);
+									num = 1;
+									checkArc3();
+									sleep();
+									sketch.direcHalt1(g);
+									sleep();
+									sketch.halt(g);
+									sleep();
+									//repaint();
+									counta = 0;
+									countb = 0;
+									countc = 0;
+									input.setText("");
+									output.setText("Halt!");
+									break;
+								}else if(pattern[0]=='b'){
+									sleep();
+									sketch.direcTo5(g);
+									sleep();
+									sketch.node5(g);
+									checkArc4();
+									sleep();
+									sketch.direcHalt2(g);
+									sleep();
+									sketch.halt(g);
+									counta = 0;
+									countb = 0;
+									countc = 0;
+									input.setText("");
+									output.setText("Halt!");
+									break;
+								}
+							}
+			            }
+			            else if(check==false){
+			                output.setText("Reject");//System.out.print("Not Complete");
+			            }
+			            else{}
+			            
+			        }
+			        else
+			            output.setText("Reject");
+		}
+	}
+	public void checkArc1(){
+		Graphics g = getGraphics();
+		while(num<counta){
+			if(g.getColor()==Color.red){//ถ้าไม่ใส่สีแดง
+				sleep();
+				g.setColor(Color.black);
+				sketch.loopArc1(g);
+			}if(g.getColor()!=Color.red){
+				sleep();
+				g.setColor(Color.red);
+				sketch.loopArc1(g);	
+			}
+			num++;
+		}
+	}
+	public void checkArc2(){
+		Graphics g = getGraphics();
+		while(num<countb){
+			if(g.getColor()==Color.red){//ถ้าไม่ใส่สีแดง
+				sleep();
+				g.setColor(Color.black);
+				sketch.loopArc2(g);
+			}if(g.getColor()!=Color.red){
+				sleep();
+				g.setColor(Color.red);
+				sketch.loopArc2(g);	
+			}
+			num++;
+		}
+	}
+	public void checkArc3(){
+		Graphics g = getGraphics();
+		while(num<countc){
+			if(g.getColor()==Color.red){//ถ้าไม่ใส่สีแดง
+				sleep();
+				g.setColor(Color.black);
+				sketch.loopArc3(g);
+			} if(g.getColor()!=Color.red){
+				sleep();
+				g.setColor(Color.red);
+				sketch.loopArc3(g);	
+			}
+			num++;
+		}
+	}
+	public void checkArc4(){
+		Graphics g = getGraphics();
+		while(num<countc){
+			if(g.getColor()==Color.red){//ถ้าไม่ใส่สีแดง
+				sleep();
+				g.setColor(Color.black);
+				sketch.loopArc4(g);
+			} if(g.getColor()!=Color.red){
+				sleep();
+				g.setColor(Color.red);
+				sketch.loopArc4(g);	
+			}
+			num++;
+		}
+	}
+	public void paint(Graphics g){
+		super.paintComponents(g);
+			sketch.nodeStart(g);
+			sketch.direcTo2(g);
+			sketch.node2(g);
+			//sketch.loopArc1(g);
+			sketch.direcTo3(g);
+			sketch.node3(g);
+			//sketch.loopArc2(g);
+			sketch.direcTo4(g);
+			sketch.node4(g);
+			sketch.direcHalt1(g);
+			sketch.halt(g);
+			sketch.direcTo5(g);
+			sketch.node5(g);
+			sketch.direcHalt2(g);
+	}
+	private char[] parseString(String txt){
+		char[] pattern = txt.toCharArray();
+		return pattern;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Node();
+	}
+	public void sleep(){
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

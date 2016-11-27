@@ -1,0 +1,26 @@
+package JButton;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import JFrame.MyFrame_1;
+
+public class MyButton_1 extends JButton{
+	private MyButton_1() {
+		MyFrame_1 gui = new MyFrame_1();
+		gui.setLayout(null);
+		new JButton("Clik Me");
+		setBounds(50,20,150,50);
+		//gui.add(new);
+		gui.setSize(250,400);
+		gui.setLocation(500,50);
+		gui.setTitle("My_Button");
+		
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new MyButton_1();
+	}
+
+}

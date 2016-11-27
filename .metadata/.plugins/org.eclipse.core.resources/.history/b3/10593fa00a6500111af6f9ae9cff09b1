@@ -1,0 +1,15 @@
+import java.awt.Graphics;
+
+
+public class sketchNode extends Graphics{
+
+	/**
+	 * @param args
+	 */
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Graffic");
+	}
+
+}

@@ -1,0 +1,14 @@
+package JButton;
+
+import javax.swing.JFrame;
+
+import JFrame.MyFrame_1;
+
+public class MyButton_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyFrame_1 gui = new MyFrame_1();
+	}
+
+}

@@ -1,0 +1,38 @@
+package JFrame;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+public class MyFrame_1 extends JFrame implements ActionListener{
+
+	/**
+	 * @param args
+	 */
+	public MyFrame_1(){
+		setSize(400,400);
+		setLocation(40,50);
+		setTitle("MyFrame_1");
+		setVisible(true);//ให้แฟรมแสดงผลปกติ
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //ปิดแฟรมจบการการทำงาน
+		//-DO_NOTHING_ON_CLOSE ไม่ต้องการให้ปิดแฟรม
+		//-HIDE_ON_CLOSE ซ้อนแฟรมแสดงผลภายหลัง
+		//-DISPOSE_ON_CLOSE ปิดแฟรมแต่โปรแกรมยังไม่จบการทำงาน
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyFrame_1 gui = new MyFrame_1();
+		gui.setIconImage(null);//กำหนดรูปภาพ icon ของ Frame
+		gui.setResizable(true); //Frame can resize (เปรียนขนาด)-true&false
+		gui.getContentPane().setBackground(Color.cyan);//กำหนดืพื้นหลังของ Frame
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
